@@ -7,6 +7,11 @@
     <script src="../js/jquery.min.js"></script>
 </head>
 <body>
+
+    <h3>Student List</h3>
+    <div id="container" >
+
+    </div>
     <form action="">
         <input type="text" id="fullname" placeholder="Enter FullName"> <br>
         <textarea id="address" ></textarea> <br>
@@ -17,19 +22,33 @@
 
 
     <script>
+        
+
+
         $(document).ready(function (){
-            // $("#btn1").click(function(){
-            //     $.get("data.php", {name: "Rokon"}, function (data, status) { 
-            //         alert(data);
-            //      });
-            // });
+            function getstudents(){
+                // $.get("student.php", function(data, status){
+                //     $("#container").
+                // })
+            }
+
+           $.get("student.php", function (data, status) {
+                    $("#container").html(data)  
+
+                })
+                
             $(".btn_submit").click(function (){
                 let fullname = $("#fullname").val();
                 let address = $("#address").val();
                 //alert(fullname);
 
+                
+
                 $.get("insert.php", {name: fullname, add:address}, function (data, status) {
                     alert(data);
+                    $("#fullname").val("");
+                    $("#address").val("");
+                    getstudents();
                 });
             });
         });

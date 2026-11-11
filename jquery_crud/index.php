@@ -11,7 +11,8 @@
     <h3>Student List</h3>
     <div id="container" >
 
-    </div>
+    </div> 
+    <h3>Student Entry</h3> 
     <form action="">
         <input type="text" id="fullname" placeholder="Enter FullName"> <br>
         <textarea id="address" ></textarea> <br>
@@ -33,7 +34,18 @@
             }
 
            $.get("student.php", function (data, status) {
-                    $("#container").html(data)  
+                    $("#container").html(data)
+                    $(".btnDel").click (function () {  
+
+                    let sid = this. id;
+                    $.get("delete.php", {id:sid}, function(data){
+                        alert(data);
+
+                    })
+
+                    //alert(sid); 
+                    });
+                     
 
                 })
                 
@@ -50,8 +62,12 @@
                     $("#address").val("");
                     getstudents();
                 });
+    
             });
+            
+            
         });
+        
     </script>
 </body>
 </html>
